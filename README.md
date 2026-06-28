@@ -1,1 +1,1661 @@
-# N8N-EE
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10000+ AI N8N Templates - N8NFLOW</title>
+<meta name="description" content="Automate your workflow instantly with 10,000+ premium n8n templates. Zero coding required!">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== DESIGN TOKENS ===== */
+  :root {
+    --bg-primary: #0D0F1A;
+    --bg-card: #141629;
+    --bg-card-alt: #1A1D35;
+    --accent-1: #6C63FF;      /* electric violet */
+    --accent-2: #00E5C3;      /* neon teal */
+    --accent-3: #FF6B6B;      /* coral red */
+    --accent-4: #FFD166;      /* warm gold */
+    --text-primary: #F0F2FF;
+    --text-secondary: #A8AACC;
+    --text-muted: #6B6E99;
+    --border: rgba(108,99,255,0.2);
+    --border-light: rgba(255,255,255,0.07);
+    --grad-hero: linear-gradient(135deg, #6C63FF22, #00E5C322);
+    --grad-cta: linear-gradient(135deg, #6C63FF, #00E5C3);
+    --grad-warm: linear-gradient(135deg, #FF6B6B, #FFD166);
+    --shadow: 0 8px 40px rgba(108,99,255,0.15);
+    --radius: 16px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .highlight {
+    background: var(--grad-cta);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .highlight-warm {
+    background: var(--grad-warm);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section { padding: 80px 0; }
+
+  /* ===== STICKY HEADER BAR ===== */
+  .top-announcement {
+    background: var(--grad-cta);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #fff;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: rgba(13,15,26,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-header .brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .header-tagline {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+    flex: 1;
+  }
+
+  .header-tagline strong { color: var(--accent-2); }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--grad-cta);
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(108,99,255,0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(108,99,255,0.6);
+  }
+
+  .btn-full { width: 100%; text-align: center; }
+
+  .btn-lg { font-size: 1.15rem; padding: 18px 44px; }
+
+  .btn-pulse {
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 24px rgba(108,99,255,0.4); }
+    50% { box-shadow: 0 8px 48px rgba(108,99,255,0.8), 0 0 0 8px rgba(108,99,255,0.1); }
+  }
+
+  /* ===== BADGE ===== */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(108,99,255,0.12);
+    border: 1px solid rgba(108,99,255,0.3);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent-1);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .badge.teal {
+    background: rgba(0,229,195,0.1);
+    border-color: rgba(0,229,195,0.3);
+    color: var(--accent-2);
+  }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,229,195,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-left { position: relative; z-index: 2; }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    line-height: 1.15;
+    margin: 20px 0 24px;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  .hero-checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .hero-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .hero-checklist li .icon-check {
+    width: 20px; height: 20px;
+    background: var(--grad-cta);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.65rem;
+    color: #fff;
+  }
+
+  .hero-checklist li strong { color: var(--text-primary); }
+
+  .trust-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .trust-item .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent-2);
+  }
+
+  /* ===== HERO RIGHT - CAROUSEL ===== */
+  .hero-right { position: relative; z-index: 2; }
+
+  .carousel-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .carousel-inner {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
+  .carousel-inner img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .carousel-inner img.active { opacity: 1; }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px;
+  }
+
+  .carousel-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .carousel-dot.active {
+    background: var(--accent-1);
+    width: 20px;
+    border-radius: 3px;
+  }
+
+  .carousel-trust {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.03);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .carousel-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--accent-2);
+    font-weight: 500;
+  }
+
+  /* ===== COUNTDOWN STRIP ===== */
+  .countdown-strip {
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-card-alt));
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .countdown-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .countdown-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--accent-3);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .countdown-timer {
+    display: flex;
+    gap: 8px;
+  }
+
+  .timer-unit {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .timer-unit .num {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--accent-1);
+    line-height: 1;
+  }
+
+  .timer-unit .lbl {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 2px;
+  }
+
+  /* ===== WHY N8N SECTION ===== */
+  .why-n8n {
+    background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-primary) 100%);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-2);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    margin-bottom: 20px;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 680px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  /* ===== TEMPLATE CARDS GRID ===== */
+  .template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .template-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .template-card:hover {
+    border-color: var(--accent-1);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(108,99,255,0.2);
+  }
+
+  .template-card-img {
+    aspect-ratio: 16/8;
+    overflow: hidden;
+    background: var(--bg-card-alt);
+  }
+
+  .template-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .template-card:hover .template-card-img img {
+    transform: scale(1.04);
+  }
+
+  .template-card-body {
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .template-card-check {
+    width: 22px; height: 22px;
+    background: rgba(0,229,195,0.1);
+    border: 1px solid rgba(0,229,195,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent-2);
+    font-size: 0.7rem;
+  }
+
+  .template-card-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  .how-it-works { background: var(--bg-primary); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .step-card:hover { border-color: var(--accent-1); }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    background: var(--grad-cta);
+    border-radius: 50%;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .step-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  .step-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .step-card .step-img {
+    margin-top: 16px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+  }
+
+  .step-card .step-img img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  /* ===== WHAT'S INCLUDED ===== */
+  .whats-included { background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-card) 100%); }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+    margin-top: 48px;
+  }
+
+  .included-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .included-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .included-list li .icon-check {
+    width: 22px; height: 22px;
+    background: var(--grad-cta);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.65rem;
+    color: #fff;
+    margin-top: 1px;
+  }
+
+  .included-list li strong { color: var(--text-primary); }
+
+  .big-number-box {
+    background: var(--bg-card-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .big-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .big-number-sub {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  /* ===== BEFORE / AFTER ===== */
+  .compare { background: var(--bg-card); border-top: 1px solid var(--border-light); }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .compare-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+  }
+
+  .compare-card-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .compare-card.bad .compare-card-header {
+    background: rgba(255,107,107,0.12);
+    border-bottom: 1px solid rgba(255,107,107,0.2);
+    color: var(--accent-3);
+  }
+
+  .compare-card.good .compare-card-header {
+    background: rgba(0,229,195,0.08);
+    border-bottom: 1px solid rgba(0,229,195,0.2);
+    color: var(--accent-2);
+  }
+
+  .compare-card-body {
+    background: var(--bg-primary);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .compare-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .compare-item .ico { font-size: 1rem; flex-shrink: 0; }
+
+  /* ===== WHO IS IT FOR ===== */
+  .for-who { background: var(--bg-primary); }
+
+  .for-who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .for-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    transition: border-color 0.3s;
+  }
+
+  .for-card:hover { border-color: var(--accent-1); }
+
+  .for-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+  }
+
+  .for-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .for-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .for-card p strong { color: var(--text-primary); }
+
+  /* ===== FREE GIFTS ===== */
+  .free-gifts {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-alt) 100%);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .gifts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .gift-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: border-color 0.3s;
+  }
+
+  .gift-card:hover { border-color: var(--accent-4); }
+
+  .gift-badge {
+    background: linear-gradient(135deg, var(--accent-4), #FF9900);
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .gift-info h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+  }
+
+  .gift-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ===== TESTIMONIALS / REVIEWS ===== */
+  .reviews { background: var(--bg-primary); }
+
+  .reviews-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-style: italic;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .review-img-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+
+  .review-img-card:hover {
+    border-color: var(--accent-1);
+    transform: scale(1.03);
+  }
+
+  .review-img-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* ===== FAQ ===== */
+  .faq { background: var(--bg-card); border-top: 1px solid var(--border-light); }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 800px;
+    margin: 48px auto 0;
+  }
+
+  .faq-item {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .faq-item.open { border-color: var(--accent-1); }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    user-select: none;
+  }
+
+  .faq-question .arrow {
+    color: var(--accent-1);
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-question .arrow { transform: rotate(180deg); }
+
+  .faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.2s;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 200px;
+    padding: 0 20px 18px;
+  }
+
+  .faq-answer a { color: var(--accent-2); text-decoration: none; }
+  .faq-answer a:hover { text-decoration: underline; }
+
+  /* ===== CTA SECTIONS ===== */
+  .cta-strip {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .cta-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(108,99,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta-box h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .cta-box p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .cta-box .btn { position: relative; }
+
+  /* ===== STICKY FOOTER CTA ===== */
+  .sticky-footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(13,15,26,0.95);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border);
+    padding: 12px 24px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .sticky-footer-price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .price-old {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .price-new {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--accent-2);
+  }
+
+  .price-note {
+    font-size: 0.75rem;
+    color: var(--accent-3);
+    font-weight: 600;
+    background: rgba(255,107,107,0.1);
+    border: 1px solid rgba(255,107,107,0.25);
+    border-radius: 4px;
+    padding: 2px 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .sticky-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .sticky-trust {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .sticky-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-light);
+    padding: 40px 0 120px;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-copy {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-links a {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent-1); }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 0;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .hero .container { grid-template-columns: 1fr; gap: 40px; }
+    .hero h1 { font-size: 2rem; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .included-grid { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .for-who-grid { grid-template-columns: 1fr; }
+    .gifts-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    .template-grid { grid-template-columns: 1fr 1fr; }
+    .sticky-footer { flex-direction: column; text-align: center; }
+    .sticky-footer-price, .sticky-footer-right, .sticky-trust { justify-content: center; }
+    .btn-lg { font-size: 1rem; padding: 16px 32px; }
+  }
+
+  @media (max-width: 560px) {
+    section { padding: 56px 0; }
+    .hero { padding: 48px 0 40px; }
+    .template-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .cta-box { padding: 32px 20px; }
+    .header-tagline { display: none; }
+    .steps-grid { gap: 16px; }
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP ANNOUNCEMENT BAR -->
+<div class="top-announcement">
+  🔥 Limited Time: Get 10,000+ N8N Templates at ₹299 Only! &nbsp;|&nbsp; Instant Access + Lifetime Validity
+</div>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="#" class="brand">⚡ TrendyCart</a>
+    <div class="header-tagline">
+      <strong>10,000+ N8N Templates</strong> · Save 1000+ Hours · Zero Coding Required
+    </div>
+    <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary" style="padding:10px 22px; font-size:0.88rem;">
+      Get Templates →
+    </a>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-left reveal">
+      <div class="badge">⭐ &nbsp;10,000+ Premium Templates</div>
+      <h1>
+        Save 1000+ Hours.<br>
+        <span class="highlight">Automate Everything</span><br>
+        with N8N.
+      </h1>
+      <p class="hero-sub">
+        Get instant access to 10,000+ pre-built N8N workflow templates.
+        No coding knowledge needed — just choose, import, and automate.
+      </p>
+      <ul class="hero-checklist">
+        <li>
+          <span class="icon-check">✓</span>
+          <span><strong>10,000+ Pre-Built</strong> N8N Template Workflows</span>
+        </li>
+        <li>
+          <span class="icon-check">✓</span>
+          <span><strong>FREE VIDEO GUIDES</strong> of the Import Process</span>
+        </li>
+        <li>
+          <span class="icon-check">✓</span>
+          <span>Instant Plug &amp; Play Automation Setup</span>
+        </li>
+        <li>
+          <span class="icon-check">✓</span>
+          <span><strong>Lifetime Access</strong> · One Time Payment</span>
+        </li>
+        <li>
+          <span class="icon-check">✓</span>
+          <span><strong>Zero Coding</strong> Knowledge Required</span>
+        </li>
+        <li>
+          <span class="icon-check">✓</span>
+          <span>Infinite Scalability &amp; Massive Cost Savings</span>
+        </li>
+      </ul>
+      <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary btn-lg btn-pulse">
+        Yes, I Want 10,000+ N8N Templates →
+      </a>
+      <div class="trust-row">
+        <div class="trust-item"><span class="dot"></span>Instant Access</div>
+        <div class="trust-item"><span class="dot"></span>Lifetime Validity</div>
+        <div class="trust-item"><span class="dot"></span>One-Time Payment</div>
+      </div>
+    </div>
+    <div class="hero-right reveal">
+      <div class="carousel-wrap">
+        <div class="carousel-inner" id="heroCarousel">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/01/Home_Dev_O_Ps_43aa01a07b-scaled-e1768760543413.webp" alt="N8N DevOps Templates" class="active">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/03/10000-N8N-Templates-01.webp" alt="N8N Templates 01">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/01/Home_Sales_d1992221c7-scaled-e1768765598439.webp" alt="N8N Sales Templates">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/01/Home_Sec_O_Ps_1553ddb39b-scaled-e1768765625293.webp" alt="N8N SecOps Templates">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/03/10000-N8N-Templates-02.webp" alt="N8N Templates 02">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/01/Home_ITO_Ps_5a5aac3fda-scaled-e1768765644975.webp" alt="N8N ITO Templates">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/03/10000-N8N-Templates-03.webp" alt="N8N Templates 03">
+        </div>
+        <div class="carousel-dots" id="heroDots"></div>
+        <div class="carousel-trust">
+          <div class="carousel-trust-item">✓ Instant Access</div>
+          <div class="carousel-trust-item">✓ Lifetime Validity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN STRIP -->
+<div class="countdown-strip">
+  <div class="container">
+    <div class="countdown-inner">
+      <div class="countdown-label">⏰ Offer Expires In:</div>
+      <div class="countdown-timer">
+        <div class="timer-unit">
+          <span class="num" id="ctMins">--</span>
+          <span class="lbl">Mins</span>
+        </div>
+        <div class="timer-unit">
+          <span class="num" id="ctSecs">--</span>
+          <span class="lbl">Secs</span>
+        </div>
+      </div>
+      <div class="countdown-label" style="color: var(--text-secondary); font-size:0.82rem; text-transform:none; letter-spacing:0; font-weight:400;">
+        Don't miss this limited-time deal
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY N8N SECTION -->
+<section class="why-n8n">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:760px; margin:0 auto;">
+      <p class="section-eyebrow">Why N8N Templates?</p>
+      <h2 class="section-title">Do you know <span class="highlight">Why N8N Templates are in great demand?</span></h2>
+      <p class="section-sub" style="margin:0 auto 48px;">
+        You can automate almost every task with these templates and save 1000s of hours of manual work. 
+        People also use these templates to serve high-paying clients.
+      </p>
+    </div>
+
+    <div class="template-grid reveal">
+      <div class="template-card">
+        <div class="template-card-img">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/03/Automated-Social-Media-Instagram-Posting-N8N-Template-1024x485.webp" alt="Instagram Automation" loading="lazy">
+        </div>
+        <div class="template-card-body">
+          <div class="template-card-check">✓</div>
+          <span class="template-card-label">Instagram Reels Posting Automation</span>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-card-img">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/03/Youtube-Automated-Video-Uploading-N8N-Automation-1024x485.webp" alt="YouTube Automation" loading="lazy">
+        </div>
+        <div class="template-card-body">
+          <div class="template-card-check">✓</div>
+          <span class="template-card-label">YouTube Automated Video Posting</span>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-card-img">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/03/Linkedin-Leads-and-Data-Scraping-N8N-Automation-1024x485.webp" alt="LinkedIn Automation" loading="lazy">
+        </div>
+        <div class="template-card-body">
+          <div class="template-card-check">✓</div>
+          <span class="template-card-label">LinkedIn Leads Scraping Automation</span>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-card-img">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/03/Whatsapp-Chat-Leads-N8N-Automation-1024x485.webp" alt="WhatsApp Automation" loading="lazy">
+        </div>
+        <div class="template-card-body">
+          <div class="template-card-check">✓</div>
+          <span class="template-card-label">WhatsApp Chat Automation</span>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-card-img">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/03/Appointement-Booking-N8N-Automation-1024x485.webp" alt="Appointment Automation" loading="lazy">
+        </div>
+        <div class="template-card-body">
+          <div class="template-card-check">✓</div>
+          <span class="template-card-label">Automated Appointment Booking</span>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-card-img">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/03/AI-Chatbot-Personal-Assistant-Automation-1024x485.webp" alt="AI Chatbot" loading="lazy">
+        </div>
+        <div class="template-card-body">
+          <div class="template-card-check">✓</div>
+          <span class="template-card-label">Personal AI Chatbot Automation</span>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:20px; color: var(--text-muted); font-size:0.85rem; font-style:italic;">
+      …and many more automations possible with 10,000+ templates
+    </p>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="whats-included">
+  <div class="container">
+    <div class="included-grid reveal">
+      <div>
+        <p class="section-eyebrow">What's Included</p>
+        <h2 class="section-title"><span class="highlight">10,000+</span> N8N Automations Included</h2>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:32px; line-height:1.7;">
+          We cannot list all 10,000+ N8N Templates on a single page. You can automate every task
+          and save thousands of hours of manual work!
+        </p>
+        <ul class="included-list">
+          <li><span class="icon-check">✓</span><span><strong>10,000+ Pre-Built</strong> N8N Template Workflows</span></li>
+          <li><span class="icon-check">✓</span><span><strong>FREE VIDEO GUIDES</strong> of the Import Process</span></li>
+          <li><span class="icon-check">✓</span><span>Instant Plug &amp; Play Automation Setup</span></li>
+          <li><span class="icon-check">✓</span><span><strong>Lifetime Access</strong> · One-Time Payment</span></li>
+          <li><span class="icon-check">✓</span><span><strong>Zero Coding</strong> Knowledge Required</span></li>
+          <li><span class="icon-check">✓</span><span>Infinite Scalability &amp; Massive Cost Savings</span></li>
+          <li><span class="icon-check">✓</span><span>Works with AI agents, ChatGPT, and LLMs</span></li>
+          <li><span class="icon-check">✓</span><span>Use for client projects — commercial use allowed</span></li>
+        </ul>
+        <br>
+        <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary" style="margin-top:8px;">
+          Yes, I Want to Automate My Work →
+        </a>
+      </div>
+      <div class="big-number-box">
+        <div class="big-number highlight">10,000+</div>
+        <div class="big-number-sub">Pre-Built N8N Templates</div>
+        <div style="border-top: 1px solid var(--border-light); padding-top: 20px; margin-top: 4px;">
+          <div class="big-number highlight-warm" style="font-size:3rem;">200+</div>
+          <div class="big-number-sub">FREE Video Guides &amp; Courses</div>
+        </div>
+        <div style="border-top: 1px solid var(--border-light); padding-top: 20px; margin-top: 4px;">
+          <div class="big-number" style="background: var(--grad-warm); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-size:3rem;">5,000+</div>
+          <div class="big-number-sub">Advanced ChatGPT Prompts Bundle</div>
+          <span class="badge teal" style="margin-top:8px;">🎁 Free Gift</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:680px; margin:0 auto;">
+      <p class="section-eyebrow">Step-by-Step Process</p>
+      <h2 class="section-title">
+        <span class="highlight">3 Simple Steps</span> to Import Your N8N Templates
+      </h2>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Choose Any Template</h3>
+        <p>Browse the provided document and pick any template that fits your workflow — for example, one that automates Lead Management &amp; Instagram Posting.</p>
+        <div class="step-img">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/N8N-screenshot-step-01-1024x576.webp" alt="Step 1 - Choose template" loading="lazy">
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Import the JSON File</h3>
+        <p>Download the JSON file for your chosen template and import it directly onto your N8N workflow canvas. It's that simple.</p>
+        <div class="step-img">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/N8N-screenshot-step-02-1024x576.webp" alt="Step 2 - Import JSON" loading="lazy">
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Done — Start Automating!</h3>
+        <p>After the JSON file is imported, you're done. Start customizing your N8N template and let it run on autopilot 24/7.</p>
+        <div class="step-img">
+          <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/N8N-screenshot-step-03-1024x576.webp" alt="Step 3 - Done" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <p style="font-size:1rem; color:var(--text-secondary); margin-bottom:24px;">
+        You'll also receive <strong style="color:var(--accent-2)">200+ FREE VIDEO GUIDES</strong> to help you on your journey!
+      </p>
+      <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary">
+        Yes, I Want to Save My Time →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER COMPARE -->
+<section class="compare">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:680px; margin:0 auto 48px;">
+      <p class="section-eyebrow">The Difference</p>
+      <h2 class="section-title">With Templates vs. Without Templates</h2>
+    </div>
+    <div class="compare-grid reveal">
+      <div class="compare-card bad">
+        <div class="compare-card-header">⚠️ N8N Workflows Without Templates</div>
+        <div class="compare-card-body">
+          <div class="compare-item"><span class="ico">❌</span> 100s of Hours of Manual Setup</div>
+          <div class="compare-item"><span class="ico">❌</span> Constant Errors &amp; Debugging</div>
+          <div class="compare-item"><span class="ico">❌</span> Intense Coding Knowledge Required</div>
+          <div class="compare-item"><span class="ico">❌</span> Very Hard for Beginners</div>
+          <div class="compare-item"><span class="ico">❌</span> Manual Task Fatigue</div>
+        </div>
+      </div>
+      <div class="compare-card good">
+        <div class="compare-card-header">🤩 N8N Workflows With Templates</div>
+        <div class="compare-card-body">
+          <div class="compare-item"><span class="ico">✅</span> Instant Plug &amp; Play for Any Workflow</div>
+          <div class="compare-item"><span class="ico">✅</span> Error-Proof Logic — No Debugging Needed</div>
+          <div class="compare-item"><span class="ico">✅</span> Zero Coding Knowledge Needed</div>
+          <div class="compare-item"><span class="ico">✅</span> Perfect for Beginners</div>
+          <div class="compare-item"><span class="ico">✅</span> Lifetime Access · 24/7 Autopilot</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary btn-lg btn-pulse">
+        Yes, I Am Ready! →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS IT FOR -->
+<section class="for-who">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:680px; margin:0 auto;">
+      <p class="section-eyebrow">Who Can Use This?</p>
+      <h2 class="section-title"><span class="highlight">Who Can Use</span> These Premium N8N Templates? 🤖</h2>
+    </div>
+    <div class="for-who-grid reveal">
+      <div class="for-card">
+        <div class="for-card-icon">🎯</div>
+        <h3>The Complete Beginners</h3>
+        <p>
+          <strong>You don't need any coding skills</strong> to use these templates. Just choose, import, and start automating your work! Even a complete beginner can automate their workflow with these templates.
+        </p>
+      </div>
+      <div class="for-card">
+        <div class="for-card-icon">🚀</div>
+        <h3>Anyone Who Wants to Automate</h3>
+        <p>
+          Use these templates to automate your <strong>Instagram posting</strong>, <strong>marketing funnels</strong>, <strong>lead generation</strong>, <strong>CRM management</strong>, <strong>customer support</strong>, and much more.
+        </p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary">
+        Yes, I Want to Automate My Work! →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FREE GIFTS -->
+<section class="free-gifts">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:680px; margin:0 auto;">
+      <p class="section-eyebrow">Bonus Gifts</p>
+      <h2 class="section-title"><span class="highlight-warm">FREE GIFTS</span> Included with This Bundle 🎁</h2>
+    </div>
+    <div class="gifts-grid reveal">
+      <div class="gift-card">
+        <div class="gift-badge">FREE GIFT</div>
+        <div class="gift-info">
+          <h3>5,000+ Advanced ChatGPT Prompts Bundle</h3>
+          <p>A massive collection of advanced ChatGPT prompts to supercharge your AI workflow and creativity.</p>
+        </div>
+      </div>
+      <div class="gift-card">
+        <div class="gift-badge">FREE GIFT</div>
+        <div class="gift-info">
+          <h3>200+ Advanced Video Guides &amp; Courses</h3>
+          <p>Step-by-step video tutorials to help you set up, customize, and master every N8N template in the bundle.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary">
+        Yes, I Want to Claim These Free Gifts →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS / SOCIAL PROOF -->
+<section class="reviews">
+  <div class="container">
+    <div class="reveal" style="max-width:680px; margin:0 auto 8px;">
+      <p class="section-eyebrow">Social Proof</p>
+      <h2 class="section-title"><span class="highlight">What People Say</span> About Our 10,000+ N8N Templates!</h2>
+    </div>
+    <p class="reviews-note">Real screenshots from our customers.</p>
+    <div class="reviews-grid reveal">
+      <div class="review-img-card">
+        <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/Blizmatt-n8n-Reviews-01-473x1024.avif" alt="Customer Review 1" loading="lazy">
+      </div>
+      <div class="review-img-card">
+        <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/Blizamatt-n8n-Reviews-002-473x1024.avif" alt="Customer Review 2" loading="lazy">
+      </div>
+      <div class="review-img-card">
+        <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/Blizmatt-n8n-Reviews-03-473x1024.avif" alt="Customer Review 3" loading="lazy">
+      </div>
+      <div class="review-img-card">
+        <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/Blizmatt-n8n-Reviews-004-473x1024.avif" alt="Customer Review 4" loading="lazy">
+      </div>
+      <div class="review-img-card">
+        <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/Blizmatt-n8n-Reviews-06-473x1024.avif" alt="Customer Review 5" loading="lazy">
+      </div>
+      <div class="review-img-card">
+        <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/Blizmatt-n8n-Reviews-07-473x1024.avif" alt="Customer Review 6" loading="lazy">
+      </div>
+      <div class="review-img-card">
+        <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/Blizmatt-n8n-Reviews-008-473x1024.avif" alt="Customer Review 7" loading="lazy">
+      </div>
+      <div class="review-img-card">
+        <img src="https://ai.blizmatt.com/wp-content/uploads/2026/02/Blizmatt-n8n-Reviews-05-473x1024.avif" alt="Customer Review 8" loading="lazy">
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary btn-lg btn-pulse">
+        Yes, I Want to Save My Time &amp; Automate My Work →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2><span class="highlight">Are You Ready</span> to Automate 🤖 Your Workflow with 10,000+ N8N Templates?</h2>
+      <p>You can automate anything you want — Lead Generation, CRM, Instagram Posting, or any other complex workflows.</p>
+      <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary btn-lg btn-pulse">
+        Let's Automate Everything →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:680px; margin:0 auto;">
+      <p class="section-eyebrow">Got Questions?</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How do I "Import" these 10,000+ templates into my n8n?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          It is a very simple process: you just download the JSON file and import it directly onto your N8N workflow canvas. Most templates also include helpful notes to guide you through the process.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Can I use these templates for my client projects?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          YES. You can use these templates for your client projects and also for your personal uses.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Will these templates work with AI agents and LLMs such as ChatGPT?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          YES, many templates are specifically designed for AI-powered workflows, including integration with ChatGPT, Claude, and other LLMs.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Can I customize these templates after importing them?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          YES, you can customize these N8N Templates according to your specific needs!
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Can I use these templates if I don't know any coding?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          YES. You can use these templates even if you don't know a single line of custom code. Zero coding knowledge required.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Is this a one-time payment or a monthly subscription?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          This is a one-time payment for the entire bundle of 10,000+ templates. Once you buy it, you get lifetime access and lifetime validity without any recurring fees.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How can I contact support?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          You can contact us on our official WhatsApp number <a href="https://wa.me/919234220213?text=Hello%21" target="_blank"><strong>+91 92342 20213</strong></a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">TrendyCart © 2026 · All Rights Reserved</div>
+    
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY FOOTER CTA -->
+<div class="sticky-footer">
+  <div class="sticky-footer-price">
+    <span class="price-old">Rs. 749/-</span>
+    <span class="price-new">Rs. 299/-</span>
+    <span class="price-note">Limited Time Offer</span>
+  </div>
+  <div class="sticky-footer-right">
+    <div class="sticky-trust">
+      <div class="sticky-trust-item">✓ Instant Access</div>
+      <div class="sticky-trust-item">✓ Lifetime Validity</div>
+    </div>
+    <a href="https://superprofile.bio/vp/ready-made-n8n-automation-templates" class="btn btn-primary btn-pulse" style="padding:12px 28px;">
+      Yes, I Want This Offer! →
+    </a>
+  </div>
+</div>
+
+<script>
+// ===== CAROUSEL =====
+(function() {
+  const carousel = document.getElementById('heroCarousel');
+  const images = carousel ? carousel.querySelectorAll('img') : [];
+  const dotsWrap = document.getElementById('heroDots');
+  let current = 0, timer;
+
+  if (!images.length) return;
+
+  // Build dots
+  images.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsWrap.appendChild(d);
+  });
+
+  function goTo(n) {
+    images[current].classList.remove('active');
+    dotsWrap.children[current].classList.remove('active');
+    current = (n + images.length) % images.length;
+    images[current].classList.add('active');
+    dotsWrap.children[current].classList.add('active');
+  }
+
+  function next() { goTo(current + 1); }
+
+  timer = setInterval(next, 4000);
+  carousel.addEventListener('mouseenter', () => clearInterval(timer));
+  carousel.addEventListener('mouseleave', () => { timer = setInterval(next, 4000); });
+})();
+
+// ===== COUNTDOWN =====
+(function() {
+  let total = 240 * 60; // 4 hours in seconds
+  const mEl = document.getElementById('ctMins');
+  const sEl = document.getElementById('ctSecs');
+
+  function tick() {
+    if (total <= 0) { total = 240 * 60; }
+    const m = Math.floor(total / 60);
+    const s = total % 60;
+    if (mEl) mEl.textContent = String(m).padStart(2, '0');
+    if (sEl) sEl.textContent = String(s).padStart(2, '0');
+    total--;
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// ===== FAQ TOGGLE =====
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  // Open clicked if it was closed
+  if (!isOpen) item.classList.add('open');
+}
+
+// ===== SCROLL REVEAL =====
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+</script>
+
+</body>
+</html>
